@@ -1,0 +1,13 @@
+Pasos para clonar un repositorio:
+
+1) Abrir git bash
+2) con el comando CD eligen la ubicación donde lo quieren clonar. Ejemplo CD C:/Users/Pepito/Desktop
+2) git clone [LINK REPOSITORIO]
+
+HACEN LOS CAMBIOS QUE QUIERAN Y LUEGO:
+
+1) git add .
+2) git commit -m "Mensaje del commit"
+3) git push
+
+git pull para actualizar sin borrar el repositorio y volver a agregarlo

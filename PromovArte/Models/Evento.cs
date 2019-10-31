@@ -23,12 +23,11 @@ namespace PromovArte.Models
 
         }
 
-        public Evento(int idEvento, int tipo, string titulo, HttpPostedFileBase foto, string nombreImagen, string descripcion, bool destacado, DateTime fecha, int artista)
+        public Evento(int idEvento, int tipo, string titulo, string nombreImagen, string descripcion, bool destacado, DateTime fecha, int artista)
         {
             IdEvento = idEvento;
             Tipo = tipo;
             Titulo = titulo;
-            Foto = foto;
             NombreImagen = nombreImagen;
             Descripcion = descripcion;
             Destacado = destacado;

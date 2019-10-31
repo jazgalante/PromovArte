@@ -184,11 +184,33 @@ namespace PromovArte.Models
                 string nima = Lector["Foto"].ToString();
                 bool dest = Convert.ToBoolean(Lector["Destacado"]);
                 DateTime fec = Convert.ToDateTime(Lector["Fecha"]);
-                Evento eve = new Evento (ide, idte, des, tit, art ,nima, dest, fec);
+                Evento eve = new Evento(ide, idte, tit, nima, des, dest, fec,art);
                 ListaEventos.Add(eve);
             }
             Desconectar(Conn);
             return ListaEventos;
+        }
+        public static Artista ArtistaDestacado()
+        {
+            Artista ar = new Artista();
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta1 = Conexion.CreateCommand();
+            Consulta1.CommandType = System.Data.CommandType.Text;
+            Consulta1.CommandText = "SELECT * From Artistas WHERE Destacado=1";
+            SqlDataReader dataReader1 = Consulta1.ExecuteReader();
+            while (dataReader1.Read())
+            {
+                ar.IdArtista = Convert.ToInt32(dataReader1["IdArtista"]);
+                ar.NombreUsuario = dataReader1["NombreUsuario"].ToString();
+                ar.Descripcion = dataReader1["Descripcion"].ToString();
+                ar.Nombre = dataReader1["Nombre"].ToString();
+                ar.Apellido = dataReader1["Apellido"].ToString();
+                ar.Contraseña = dataReader1["Contraseña"].ToString();
+
+            }
+            Desconectar(Conexion);
+            return ar;
+
         }
 
     }
