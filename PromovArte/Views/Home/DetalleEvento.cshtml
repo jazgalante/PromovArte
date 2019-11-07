@@ -1,0 +1,15 @@
+﻿@using PromovArte.Models
+@{
+    ViewBag.Title = "DetalleEvento";
+}
+    <h2 > Detalle Evento Destacado</h2>
+<h1>@ViewBag.Evento.Titulo</h1>
+<h3>@ViewBag.Evento.Descripcion</h3>
+<img src="~/Content/@ViewBag.Evento.Foto" style="width:200px" />
+    <br>
+<a href='@Url.Action("Index","Home")' title="Index " target="blank"> Ir al Index </a>
+
+
+
+
+

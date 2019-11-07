@@ -35,7 +35,9 @@ namespace PromovArte.Models
                 art.Apellido = dataReader1["Apellido"].ToString();
                 art.NombreUsuario = dataReader1["NombreUsuario"].ToString();
                 art.Contraseña= dataReader1["Contraseña"].ToString();
-                
+                art.Descripcion= dataReader1["Descripcion"].ToString();
+                art.NombreImagen = dataReader1["Foto"].ToString();
+
 
             }
             Desconectar(Conexion);
@@ -157,6 +159,7 @@ namespace PromovArte.Models
                 evento.NombreImagen = dataReader1["Foto"].ToString();
                 evento.Destacado = Convert.ToBoolean(dataReader1["Destacado"]);
                 evento.Fecha = Convert.ToDateTime(dataReader1["Fecha"]);
+
                 ListaEventosArt.Add(evento);
             }
             Desconectar(Conexion);
@@ -206,6 +209,8 @@ namespace PromovArte.Models
                 ar.Nombre = dataReader1["Nombre"].ToString();
                 ar.Apellido = dataReader1["Apellido"].ToString();
                 ar.Contraseña = dataReader1["Contraseña"].ToString();
+                ar.NombreImagen = dataReader1["Foto"].ToString();
+
 
             }
             Desconectar(Conexion);

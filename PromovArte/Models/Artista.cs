@@ -13,6 +13,9 @@ namespace PromovArte.Models
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Contraseña { get; set; }
+        public HttpPostedFileBase Foto { get; set; }
+        public string NombreImagen { get; set; }
+
 
 
 
@@ -21,7 +24,7 @@ namespace PromovArte.Models
 
         }
 
-        public Artista(int idArtista, string nombreUsuario, string descripcion, string nombre, string apellido, string contraseña)
+        public Artista(int idArtista, string nombreUsuario, string descripcion, string nombre, string apellido, string contraseña, HttpPostedFileBase foto, string nombreImagen)
         {
             IdArtista = idArtista;
             NombreUsuario = nombreUsuario;
@@ -29,6 +32,8 @@ namespace PromovArte.Models
             Nombre = nombre;
             Apellido = apellido;
             Contraseña = contraseña;
+            Foto = foto;
+            NombreImagen = nombreImagen;
         }
     }
 }

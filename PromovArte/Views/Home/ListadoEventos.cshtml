@@ -1,0 +1,17 @@
+﻿@using PromovArte.Models
+@{
+    ViewBag.Title = "ListadoEventos";
+}
+
+<ul>
+    @foreach (Evento evento in ViewBag.ListaEventos)
+    {
+        <li>
+
+            <img src="~/Content/@evento.Foto" style="width:200px" />
+            <a href='@Url.Action("DetalleEvento", "Home", new { IdEvento = evento.IdEvento })'>@evento.Titulo</a>
+        </li>
+    }
+
+</ul>
+

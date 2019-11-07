@@ -1,0 +1,13 @@
+﻿@using PromovArte.Models
+@{
+    ViewBag.Title = "DetalleArtista";
+}
+    <h2> Detalle Artista Destacado</h2>
+    <h1>@ViewBag.Artista.NombreUsuario</h1>
+    <h3>@ViewBag.Artista.Descripcion</h3>
+    <img src="~/Content/@ViewBag.Artista.Foto" style="width:200px" />
+    <br>
+    <a href='@Url.Action("Index","Home")' title="Index " target="blank"> Ir al Index </a>
+
+
+
