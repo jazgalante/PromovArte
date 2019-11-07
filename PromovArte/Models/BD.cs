@@ -20,6 +20,9 @@ namespace PromovArte.Models
             conexion.Close();
         }
 
+
+
+
         public static Artista TraerUnArtista(int IdArtista)
         {
             Artista art = new Artista();
@@ -43,7 +46,6 @@ namespace PromovArte.Models
             return art;
 
         }
-
         public static Evento TraerUnEvento(int IdEvento)
         {
             Evento ev = new Evento();
@@ -68,7 +70,7 @@ namespace PromovArte.Models
 
         }
 
-        public static Evento EventoDestacado()
+        public static Evento TraerEventoDestacado()
         {
             Evento even = new Evento();
             SqlConnection Conexion = Conectar();
@@ -92,7 +94,71 @@ namespace PromovArte.Models
             return even;
 
         }
+        public static Artista TraerArtistaDestacado()
+        {
+            Artista ar = new Artista();
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta1 = Conexion.CreateCommand();
+            Consulta1.CommandType = System.Data.CommandType.Text;
+            Consulta1.CommandText = "SELECT * From Artistas WHERE Destacado=1";
+            SqlDataReader dataReader1 = Consulta1.ExecuteReader();
+            while (dataReader1.Read())
+            {
+                ar.IdArtista = Convert.ToInt32(dataReader1["IdArtista"]);
+                ar.NombreUsuario = dataReader1["NombreUsuario"].ToString();
+                ar.Nombre = dataReader1["Nombre"].ToString();
+                ar.Apellido = dataReader1["Apellido"].ToString();
+                ar.Contraseña = dataReader1["Contraseña"].ToString();
+                ar.Destacado = Convert.ToBoolean(dataReader1["Destacado"]);
+                ar.Descripcion = dataReader1["Descripcion"].ToString();
+                ar.NombreFoto = dataReader1["Foto"].ToString();
+            }
+            Desconectar(Conexion);
+            return ar;
+        }
+        // BUSCAR OTROS DESTACADOS Y DES-DESTACAR
 
+        public static void DestacarEvento(int IdEvento)
+        {
+            SqlConnection Conec = Conectar();
+            SqlCommand Consulta = Conec.CreateCommand();
+            Consulta.CommandType = System.Data.CommandType.Text;
+            Consulta.CommandText = "UPDATE Eventos SET Destacado = 1 WHERE IdEvento = " + IdEvento;
+            Consulta.ExecuteNonQuery();
+            Desconectar(Conec);
+        }
+        public static void DestacarArtista (int IdArtista)
+        {
+            SqlConnection Conec = Conectar();
+            SqlCommand Consulta = Conec.CreateCommand();
+            Consulta.CommandType = System.Data.CommandType.Text;
+            Consulta.CommandText = "UPDATE Artistas SET Destacado = 1 WHERE IdEvento = " + IdArtista;
+            Consulta.ExecuteNonQuery();
+            Desconectar(Conec);
+        }
+
+
+
+
+        public static List<TipoEvento> ListarTipoEventos()
+        {
+            List<TipoEvento> ListaTipoEvento = new List<TipoEvento>();
+            SqlConnection Conexion = Conectar();
+            SqlCommand Consulta1 = Conexion.CreateCommand();
+            Consulta1.CommandType = System.Data.CommandType.Text;
+            Consulta1.CommandText = "SELECT * From TipoEventos";
+            SqlDataReader dataReader1 = Consulta1.ExecuteReader();
+            while (dataReader1.Read())
+            {
+                TipoEvento tpe = new TipoEvento();
+                tpe.IdTipoEvento = Convert.ToInt32(dataReader1["IdTipoEvento"]);
+                tpe.Nombre = dataReader1["Nombre"].ToString();
+                ListaTipoEvento.Add(tpe);
+            }
+            Desconectar(Conexion);
+            return ListaTipoEvento;
+
+        }
         public static List<Evento> ListarEventosXTipo(int Tipo)
         {
             List<Evento> ListaEventosTipo = new List<Evento>();
@@ -118,27 +184,6 @@ namespace PromovArte.Models
             return ListaEventosTipo;
 
         }
-
-        public static List<TipoEvento> ListarTipoEventos()
-        {
-            List<TipoEvento> ListaTipoEvento = new List<TipoEvento>();
-            SqlConnection Conexion = Conectar();
-            SqlCommand Consulta1 = Conexion.CreateCommand();
-            Consulta1.CommandType = System.Data.CommandType.Text;
-            Consulta1.CommandText = "SELECT * From TipoEventos";
-            SqlDataReader dataReader1 = Consulta1.ExecuteReader();
-            while (dataReader1.Read())
-            {
-                TipoEvento tpe = new TipoEvento();
-                tpe.IdTipoEvento = Convert.ToInt32(dataReader1["IdTipoEvento"]);
-                tpe.Nombre = dataReader1["Nombre"].ToString();
-                ListaTipoEvento.Add(tpe);
-            }
-            Desconectar(Conexion);
-            return ListaTipoEvento;
-
-        }
-
         public static List<Evento> ListarEventosXArtista(int Artista)
         {
             List<Evento> ListaEventosArt = new List<Evento>();
@@ -165,7 +210,6 @@ namespace PromovArte.Models
             return ListaEventosArt;
 
         }
-
         public static List<Evento> ListarTodosEventos()
         {
             List<Evento> ListaEventos = new List<Evento>();
@@ -192,37 +236,20 @@ namespace PromovArte.Models
             Desconectar(Conn);
             return ListaEventos;
         }
-        public static Artista ArtistaDestacado()
-        {
-            Artista ar = new Artista();
-            SqlConnection Conexion = Conectar();
-            SqlCommand Consulta1 = Conexion.CreateCommand();
-            Consulta1.CommandType = System.Data.CommandType.Text;
-            Consulta1.CommandText = "SELECT * From Artistas WHERE Destacado=1";
-            SqlDataReader dataReader1 = Consulta1.ExecuteReader();
-            while (dataReader1.Read())
-            {
-                ar.IdArtista = Convert.ToInt32(dataReader1["IdArtista"]);
-                ar.NombreUsuario = dataReader1["NombreUsuario"].ToString();
-                ar.Nombre = dataReader1["Nombre"].ToString();
-                ar.Apellido = dataReader1["Apellido"].ToString();
-                ar.Contraseña = dataReader1["Contraseña"].ToString();
-                ar.Destacado = Convert.ToBoolean(dataReader1["Destacado"]);
-                ar.Descripcion = dataReader1["Descripcion"].ToString();
-                ar.NombreFoto = dataReader1["Foto"].ToString();
-            }
-            Desconectar(Conexion);
-            return ar;
 
-        }
-        public static void DestacarEvento(int IdEvento)
+
+ 
+
+        public static void CrearEvento(Evento eve)
         {
+
             SqlConnection Conec = Conectar();
             SqlCommand Consulta = Conec.CreateCommand();
             Consulta.CommandType = System.Data.CommandType.Text;
-            Consulta.CommandText = "UPDATE Eventos SET Destacada = 0 UPDATE Eventos SET Destacada = 1 WHERE IdEvento = " + IdEvento;
+            Consulta.CommandText = "INSERT INTO Eventos (Tipo, Descripcion, Titulo, Artista, Foto, Destacado, Fecha) VALUES (" + eve.Tipo + ", '" + eve.Descripcion + "', '" + eve.Titulo + "', '" + eve.Artista + "', '" + eve.Foto + "','" + 0 + "', '" + eve.Fecha + ")";
             Consulta.ExecuteNonQuery();
             Desconectar(Conec);
+
         }
         public static void BorrarEvento(int IdEvento)
         {
@@ -244,17 +271,38 @@ namespace PromovArte.Models
             Desconectar(Conec);
 
         }
-        public static void CrearEvento(Evento eve)
+        
+        public static void CrearArtista(Artista arti)
         {
 
             SqlConnection Conec = Conectar();
             SqlCommand Consulta = Conec.CreateCommand();
             Consulta.CommandType = System.Data.CommandType.Text;
-            Consulta.CommandText = "INSERT INTO Eventos (Tipo, Descripcion, Titulo, Artista, Foto, Destacado, Fecha) VALUES (" + eve.Tipo + ", '" + eve.Descripcion + "', '" + eve.Titulo + "', '" + eve.Artista + "', '" + eve.Foto + "','" + 0 + "', '" + eve.Fecha + ")";
+            Consulta.CommandText = "INSERT INTO Artistas (Nombre, Apellido, NombreUsuario, Contraseña, Destacado, Descripcion) VALUES (" + arti.Nombre + ", '" + arti.Apellido + "', '" + arti.NombreUsuario + "', '" + arti.Contraseña + "', '" + 0 + "', '" + arti.Descripcion + arti.NombreFoto + ")";
+            Consulta.ExecuteNonQuery();
+            Desconectar(Conec);
+        }
+        public static void BorrarArtista(int IdArtista)
+        {
+            SqlConnection Conec = Conectar();
+            SqlCommand Consulta = Conec.CreateCommand();
+            Consulta.CommandType = System.Data.CommandType.Text;
+            Consulta.CommandText = "DELETE FROM Artistas WHERE IdArtista = " + IdArtista;
+            Consulta.ExecuteNonQuery();
+            Desconectar(Conec);
+        }
+        public static void EditarArtista(Artista ar)
+        {
+
+            SqlConnection Conec = Conectar();
+            SqlCommand Consulta = Conec.CreateCommand();
+            Consulta.CommandType = System.Data.CommandType.Text;
+            Consulta.CommandText = "UPDATE Artistas SET Nombre = '" + ar.Nombre + "', Apellido = '" + ar.Apellido + "', NombreUsuario = '" + ar.NombreUsuario + "', Contraseña = '" + ar.Contraseña + "', Foto = '" + ar.NombreFoto + "', Destacado = '" + 0 + "', Descripcion = '" + ar.Descripcion + "' WHERE " + "IdArtista = " + ar.IdArtista;
             Consulta.ExecuteNonQuery();
             Desconectar(Conec);
 
         }
+
         public static bool ExisteUsuario(Artista art)
         {
             bool devolver = false;
@@ -271,16 +319,6 @@ namespace PromovArte.Models
             }
             Desconectar(Conn);
             return devolver;
-        }
-        public static void CrearArtista(Artista arti)
-        {
-
-            SqlConnection Conec = Conectar();
-            SqlCommand Consulta = Conec.CreateCommand();
-            Consulta.CommandType = System.Data.CommandType.Text;
-            Consulta.CommandText = "INSERT INTO Artistas (Nombre, Apellido, NombreUsuario, Contraseña, Destacado, Descripcion) VALUES (" + arti.Nombre + ", '" + arti.Apellido + "', '" + arti.NombreUsuario + "', '" + arti.Contraseña + "', '" + 0 + "', '" + arti.Descripcion + arti.NombreFoto + ")";
-            Consulta.ExecuteNonQuery();
-            Desconectar(Conec);
         }
     }
 }

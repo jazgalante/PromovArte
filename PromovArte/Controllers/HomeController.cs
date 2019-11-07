@@ -11,27 +11,13 @@ namespace PromovArte.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.EvDest = BD.EventoDestacado();
-            ViewBag.ArtDest = BD.ArtistaDestacado();
+            ViewBag.EvDest = BD.TraerEventoDestacado();
+            ViewBag.ArtDest = BD.TraerArtistaDestacado();
             ViewBag.ListaTipo = BD.ListarTipoEventos();
             ViewBag.ListaEventos = BD.ListarTodosEventos();
-            
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
         public ActionResult ListadoTipoEventos()
         {
             List<TipoEvento> Tpe = new List<TipoEvento>();
@@ -39,6 +25,8 @@ namespace PromovArte.Controllers
             ViewBag.TipoEvento = Tpe;
             return View();
         }
+
+
         public ActionResult DetalleEvento(int IdEvento)
         {
             Evento MiEvento = new Evento();
@@ -53,18 +41,22 @@ namespace PromovArte.Controllers
             ViewBag.Artista = MiArtista;
             return View();
         }
-        public ActionResult ListadoEventosTipo(int IdTipo)
+
+
+        public ActionResult ListadoEventosPorTipo(int IdTipo)
         {
 
             ViewBag.ListaEventosTipo = BD.ListarEventosXTipo(IdTipo);
             return View();
         }
-        public ActionResult ListadoEventosArtista(int IdArtista)
+        public ActionResult ListadoEventosPorArtista(int IdArtista)
         {
 
             ViewBag.ListaEventosArt = BD.ListarEventosXArtista(IdArtista);
             return View();
         }
+
+
         public ActionResult TraerUnEvento(int IdEvento)
         {
             ViewBag.TraerEvento = BD.TraerUnEvento(IdEvento);
@@ -75,6 +67,5 @@ namespace PromovArte.Controllers
             ViewBag.TraerArtista = BD.TraerUnArtista(IdArtista);
             return View();
         }
-
     }
 }

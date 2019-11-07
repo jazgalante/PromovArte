@@ -22,17 +22,12 @@ namespace PromovArte.Controllers
             return View("Backoffice");
         }
 
-        public ActionResult Destacar(int Id)
-        {
-            BD.DestacarEvento(Id);
-            return RedirectToAction("Index", "Home");
-        }
+
 
         public ActionResult Login()
         {
             return View("Login");
         }
-
         //public ActionResult Loginearse(Admin admin)
         //{
         //    List<Noticia> n = new List<Noticia>();
@@ -52,7 +47,30 @@ namespace PromovArte.Controllers
         //}
 
 
-        [HttpPost]
+        //[HttpPost]
+
+        public ActionResult DestacarEvento(int IdEvento)
+        {
+            BD.DestacarEvento(IdEvento);
+            return RedirectToAction("Index", "Home");
+        }
+        public ActionResult BorrarEvento(int IdEvento)
+        {
+            BD.BorrarEvento(IdEvento);
+            return RedirectToAction("Index", "Backoffice");
+        }
+
+        public ActionResult DestacarArtista(int IdArtista)
+        {
+            BD.DestacarArtista(IdArtista);
+            return RedirectToAction("Index", "Home");
+        }
+        public ActionResult BorrarArtista(int IdArtista)
+        {
+            BD.BorrarArtista(IdArtista);
+            return RedirectToAction("Index", "Backoffice");
+        }
+
         public ActionResult ModificarCrearEvento(Evento evento, string Accion)
         {
             if (ModelState.IsValid)
@@ -73,21 +91,18 @@ namespace PromovArte.Controllers
                 return View("FormModifica");
             }
         }
-
-
-        [HttpPost]
         public ActionResult ModificarCrearArtista(Artista Artista, string Accion)
         {
             if (ModelState.IsValid)
             {
                 if (Accion == "E")
                 {
-                    BD.ModificarArtista(Artista);
+                    BD.EditarArtista(Artista);
 
                 }
                 else
                 {
-                    BD.InsertarEvento(Evento);
+                    BD.CrearArtista(Artista);
                 }
                 return View("BackOffice");
             }
