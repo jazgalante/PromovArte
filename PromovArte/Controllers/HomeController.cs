@@ -15,6 +15,7 @@ namespace PromovArte.Controllers
             ViewBag.ArtDest = BD.ArtistaDestacado();
             ViewBag.ListaTipo = BD.ListarTipoEventos();
             ViewBag.ListaEventos = BD.ListarTodosEventos();
+            
             return View();
         }
 

@@ -192,3 +192,7 @@ Z:\programa100\PromovArte\PromovArte\obj\Debug\PromovArte.csproj.CoreCompileInpu
 Z:\programa100\PromovArte\PromovArte\obj\Debug\PromovArte.csproj.CopyComplete
 Z:\programa100\PromovArte\PromovArte\obj\Debug\PromovArte.dll
 Z:\programa100\PromovArte\PromovArte\obj\Debug\PromovArte.pdb
+Z:\2019\Programación2019\PromovArteOK\PromovArte\obj\Debug\PromovArte.csprojAssemblyReference.cache
+Z:\2019\Programación2019\PromovArteOK\PromovArte\obj\Debug\PromovArte.csproj.CoreCompileInputs.cache
+Z:\2019\Programación2019\PromovArteOK\PromovArte\obj\Debug\PromovArte.dll
+Z:\2019\Programación2019\PromovArteOK\PromovArte\obj\Debug\PromovArte.pdb

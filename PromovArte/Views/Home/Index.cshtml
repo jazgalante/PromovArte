@@ -5,26 +5,27 @@
 
     ViewBag.Title = "Index";
 
-<div>
-    <a href='@Url.Action("DetalleEvento", "Home", new { IdEvento = ViewBag.EvDest.IdEvento })'>
-        <h1>@ViewBag.EvDest.Titulo</h1>
-        <img src="~/Content/@ViewBag.EvDest.NombreImagen" style="width:200px" />
-    </a>
-</div>
+    <div>
+        <a href='@Url.Action("DetalleEvento", "Home", new { IdEvento = ViewBag.EvDest.IdEvento })'>
+            <h1>@ViewBag.EvDest.Titulo</h1>
+            <img src="~/Content/@ViewBag.EvDest.NombreImagen" style="width:200px" />
+        </a>
+    </div>
     ViewBag.Title = "Index";
-<div>
-    <a href='@Url.Action("DetalleArtista", "Home", new { IdArtista = ViewBag.ArtDest.IdArtista })'>
-        <h1>@ViewBag.ArtDest.NombreUsuario</h1>
-        <img src="~/Content/@ViewBag.ArtDest.NombreImagen" style="width:200px" />
+    <div>
+        <a href='@Url.Action("DetalleArtista", "Home", new { IdArtista = ViewBag.ArtDest.IdArtista })'>
+            <h1>@ViewBag.ArtDest.NombreUsuario</h1>
+            <img src="~/Content/@ViewBag.ArtDest.NombreImagen" style="width:200px" />
 
-    </a>
-</div>
-<ul>
-    @foreach (TipoEvento TE in ViewBag.ListaTipo)
+        </a>
+    </div>
+    <ul>
+        @foreach (TipoEvento TE in ViewBag.ListaTipo)
     {
         <li><a href='@Url.Action("ListadoEventos", "Home", new { IdTipoEvento = TE.IdTipoEvento })'> @TE.Nombre</a></li>
     }
-</ul>
-    }
+    </ul>
+    
+}
 
 

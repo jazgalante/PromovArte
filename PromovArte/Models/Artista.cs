@@ -21,7 +21,7 @@ namespace PromovArte.Models
 
         public Artista()
         {
-            Nombre = "SIIII!";
+            
         }
 
         public Artista(int idArtista, string nombreUsuario, string nombre, string apellido, string contraseña, bool destacado, string descripcion, string nombreFoto)
