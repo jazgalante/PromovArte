@@ -21,34 +21,36 @@ namespace PromovArte.Controllers
             ViewBag.eventos = eventos;
             return View("Backoffice");
         }
-
-
-
-        public ActionResult Login()
+        
+     
+      public ActionResult Login()
         {
-            return View("Login");
+            return View();
         }
-        //public ActionResult Loginearse(Admin admin)
-        //{
-        //    List<Noticia> n = new List<Noticia>();
-        //    bool b;
-        //    if(ModelState.IsValid)
-        //    {
-        //        b = BD.Log(admin);
+        [HttpPost]
+        public ActionResult LoginUsuario(Artista art)
+        {
+            if(ModelState.IsValid)
+            {
+                if(BD.ExisteUsuario(art))
+                 {
 
-        //        n = BD.listarnoticias();
-        //        ViewBag.N = n;
-        //        return View("Backoffice");
-        //    }
-        //    else
-        //    {
-        //        return View("Login");
-        //    }
-        //}
+                     return RedirectToAction("Index", "BackOffice");
 
+                 }
+                 else
+                {
+                    ViewBag.Error = "Usuario o contraseña inválida";
+                    return View("Login");
+                }
+            }
 
-        //[HttpPost]
+            else
+            {
+                return View("Login", art);
+            }
 
+        }
         public ActionResult DestacarEvento(int IdEvento)
         {
             BD.DestacarEvento(IdEvento);
@@ -112,20 +114,6 @@ namespace PromovArte.Controllers
             }
         }
 
-        //public ActionResult FormAgrega()
-        //{
-        //ViewBag.Tips = BD.traertipos();
-        //ViewBag.Id = 0;
-        //ViewBag.Accion = "I";
-        //    return View("FormModifica");
-        //}
 
-        //public ActionResult FormModifica(int Id)
-        //{
-        //ViewBag.Tips = BD.traertipos();
-        //Noticia Noti = BD.traerNoticiaElegida(Id);
-        //ViewBag.Accion = "E";
-        //    return View("FormModifica",Noti);
-        //}
     }
 }
