@@ -1,0 +1,19 @@
+﻿@using PromovArte.Models
+@model Evento
+@{
+    ViewBag.Title = "BackOffice";
+}
+
+<h2>BackOffice</h2>
+@ViewBag.Error
+@using (Html.BeginForm("GrabarEvento", "BackOffice", new { Accion = ViewBag.Accion }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(model => model.IdEvento)
+    @Html.DropDownListFor(model => model.Tipo, new SelectList(ViewBag.Tipos, "IdTipoEvento", "Nombre"))
+    @Html.TextBoxFor(model => model.Titulo) @Html.ValidationMessageFor(model => model.Titulo)
+    @Html.TextBoxFor(model => model.Foto, new { type = "file" })@Html.ValidationMessageFor(model => model.Foto)
+    @Html.TextBoxFor(model => model.Descripcion) @Html.ValidationMessageFor(model => model.Descripcion)
+    @Html.CheckBoxFor(model => model.Destacado)
+
+    <input type="submit" value="Grabar" />
+}

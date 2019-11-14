@@ -11,16 +11,11 @@ namespace PromovArte.Controllers
     {
         public ActionResult Index()
         {
+           
+            ViewBag.eventos = BD.ListarTodosEventos();
             return View();
         }
 
-        public ActionResult BackOffice()
-        {
-            List<Evento> eventos = new List<Evento>();
-            eventos = BD.ListarTodosEventos();
-            ViewBag.eventos = eventos;
-            return View("Backoffice");
-        }
         
      
       public ActionResult Login()
@@ -73,45 +68,67 @@ namespace PromovArte.Controllers
             return RedirectToAction("Index", "Backoffice");
         }
 
-        public ActionResult ModificarCrearEvento(Evento evento, string Accion)
-        {
-            if (ModelState.IsValid)
-            {
-                if (Accion == "E")
-                {
-                    BD.EditarEvento(evento);
 
-                }
-                else
-                {
-                    BD.CrearEvento(evento);
-                }
-                return View("BackOffice");
-            }
-            else
+
+        public ActionResult ModificarCrearEvento(string Accion, int idEvento)
+        {
+            if (Accion=="E")
             {
-                return View("FormModifica");
+                Evento MiEve = BD.TraerUnEvento(idEvento);
+                ViewBag.Tipos = BD.ListarTipoEventos();
+                return View("Evento", MiEve);
             }
+            if (Accion=="I")
+            {
+                ViewBag.Tipos = BD.ListarTipoEventos();
+                return View("Evento");
+            }
+            return View("Error");
         }
-        public ActionResult ModificarCrearArtista(Artista Artista, string Accion)
+        public ActionResult ModificarCrearArtista(int idArtista, string Accion)
+        {
+
+            if (Accion == "E")
+            {
+                Artista art = BD.TraerUnArtista(idArtista); 
+                return View("Artista", art);
+            }
+            if (Accion == "I")
+            {
+                
+                return View("Artista");
+            }
+            return View("Error");
+        }
+
+        [HttpPost]
+        public ActionResult GrabarEvento(Evento even, string Accion)
         {
             if (ModelState.IsValid)
             {
+                if (even.Foto != null)
+                {
+                    string NuevaUbicacion = Server.MapPath("~/Content/") + even.Foto.FileName;
+                    even.Foto.SaveAs(NuevaUbicacion);
+                    even.NombreImagen = even.Foto.FileName;
+                }
                 if (Accion == "E")
                 {
-                    BD.EditarArtista(Artista);
-
+                    BD.EditarEvento(even);
                 }
-                else
+                if (Accion== "I")
                 {
-                    BD.CrearArtista(Artista);
+                    BD.CrearEvento(even);
                 }
-                return View("BackOffice");
             }
             else
             {
-                return View("FormModifica");
+                ViewBag.Tipos = BD.ListarTipoEventos();
+                return View("Evento", even);
             }
+
+            return RedirectToAction("Index");
+
         }
 
 

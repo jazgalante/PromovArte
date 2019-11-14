@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace PromovArte.Models
 {
     public class Artista
     {
         public int IdArtista { get; set; }
+        [Required(ErrorMessage = "Ingresá un nombre de usuario válido")]
         public string NombreUsuario { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
+        [Required(ErrorMessage = "Ingresá una contraseña válida")]
         public string Contraseña { get; set; }
         public HttpPostedFileBase Foto { get; set; }
         public string NombreFoto { get; set; }

@@ -43,10 +43,10 @@ namespace PromovArte.Controllers
         }
 
 
-        public ActionResult ListadoEventosPorTipo(int IdTipo)
+        public ActionResult ListadoEventos(int IdTipoEvento)
         {
 
-            ViewBag.ListaEventosTipo = BD.ListarEventosXTipo(IdTipo);
+            ViewBag.ListaEventosTipo = BD.ListarEventosXTipo(IdTipoEvento);
             return View();
         }
         public ActionResult ListadoEventosPorArtista(int IdArtista)

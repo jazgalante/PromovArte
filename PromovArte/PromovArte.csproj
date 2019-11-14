@@ -198,10 +198,13 @@
     <Content Include="Views\Home\DetalleEvento.cshtml" />
     <Content Include="Views\Home\DetalleArtista.cshtml" />
     <Content Include="Views\Home\ListadoEventos.cshtml" />
+    <Content Include="Views\BackOffice\Login.cshtml" />
+    <Content Include="Views\BackOffice\Index.cshtml" />
+    <Content Include="Views\BackOffice\Evento.cshtml" />
+    <Content Include="Views\BackOffice\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\BackOffice\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

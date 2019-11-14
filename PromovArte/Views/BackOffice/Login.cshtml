@@ -1,0 +1,14 @@
+﻿@using PromovArte.Models
+@model Artista
+
+@{
+    ViewBag.Title = "Login";
+}
+@ViewBag.Error
+@using (Html.BeginForm("LoginUsuario", "BackOffice", FormMethod.Post))
+{
+    <p>Email:</p> @Html.TextBoxFor(model => model.NombreUsuario) @Html.ValidationMessageFor(model => model.NombreUsuario) <br />
+    <p>Contraseña:</p> @Html.PasswordFor(model => model.Contraseña) @Html.ValidationMessageFor(model => model.Contraseña)<br />
+    <input type="submit" value="Enviar" />
+}
+

@@ -5,17 +5,18 @@
 
     ViewBag.Title = "Index";
 
-    <div>
-        <a href='@Url.Action("DetalleEvento", "Home", new { IdEvento = ViewBag.EvDest.IdEvento })'>
-            <h1>@ViewBag.EvDest.Titulo</h1>
-            <img src="~/Content/@ViewBag.EvDest.NombreImagen" style="width:200px" />
-        </a>
-    </div>
+<div>
+    <a href='@Url.Action("Login","BackOffice")' title="BackOfficeController " target="blank"> Subir, editar o eliminar eventos </a> <br>
+    <a href='@Url.Action("DetalleEvento", "Home", new { IdEvento = ViewBag.EvDest.IdEvento })'>
+        <h1>@ViewBag.EvDest.Titulo</h1>
+        <img src="~/Content/@ViewBag.EvDest.NombreImagen" style="width:200px" />
+    </a>
+</div>
     ViewBag.Title = "Index";
     <div>
         <a href='@Url.Action("DetalleArtista", "Home", new { IdArtista = ViewBag.ArtDest.IdArtista })'>
             <h1>@ViewBag.ArtDest.NombreUsuario</h1>
-            <img src="~/Content/@ViewBag.ArtDest.NombreImagen" style="width:200px" />
+            <img src="~/Content/@ViewBag.ArtDest.NombreFoto" style="width:200px" />
 
         </a>
     </div>

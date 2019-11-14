@@ -8,7 +8,7 @@ namespace PromovArte.Models
 {
     public static class BD
     {
-        public static string connectionString = "Server=.;Database=PromovArte;Trusted_Connection=True;";
+        public static string connectionString = "Server= A-CAM-03;Database=PromovArte;User Id= alumno; Password= alumno;";
         public static SqlConnection Conectar()
         {
             SqlConnection a = new SqlConnection(connectionString);
@@ -132,7 +132,7 @@ namespace PromovArte.Models
             SqlConnection Conec = Conectar();
             SqlCommand Consulta = Conec.CreateCommand();
             Consulta.CommandType = System.Data.CommandType.Text;
-            Consulta.CommandText = "UPDATE Artistas SET Destacado = 1 WHERE IdEvento = " + IdArtista;
+            Consulta.CommandText = "UPDATE Artistas SET Destacado = 0 UPDATE Artistas SET Destacado = 1 WHERE IdEvento = " + IdArtista;
             Consulta.ExecuteNonQuery();
             Desconectar(Conec);
         }
@@ -165,7 +165,7 @@ namespace PromovArte.Models
             SqlConnection Conexion = Conectar();
             SqlCommand Consulta1 = Conexion.CreateCommand();
             Consulta1.CommandType = System.Data.CommandType.Text;
-            Consulta1.CommandText = "SELECT * From Evento WHERE Tipo = " + Tipo.ToString();
+            Consulta1.CommandText = "SELECT * From Eventos WHERE Tipo = " + Tipo.ToString();
             SqlDataReader dataReader1 = Consulta1.ExecuteReader();
             while (dataReader1.Read())
             {
@@ -246,7 +246,7 @@ namespace PromovArte.Models
             SqlConnection Conec = Conectar();
             SqlCommand Consulta = Conec.CreateCommand();
             Consulta.CommandType = System.Data.CommandType.Text;
-            Consulta.CommandText = "INSERT INTO Eventos (Tipo, Descripcion, Titulo, Artista, Foto, Destacado, Fecha) VALUES (" + eve.Tipo + ", '" + eve.Descripcion + "', '" + eve.Titulo + "', '" + eve.Artista + "', '" + eve.Foto + "','" + 0 + "', '" + eve.Fecha + ")";
+            Consulta.CommandText = "INSERT INTO Eventos (Tipo, Descripcion, Titulo, Artista, Foto, Destacado, Fecha) VALUES (" + eve.Tipo + ", '" + eve.Descripcion + "', '" + eve.Titulo + "', '" + eve.Artista + "', '" + eve.Foto + "','" + 0 + "', '" + eve.Fecha + "')";
             Consulta.ExecuteNonQuery();
             Desconectar(Conec);
 
@@ -310,7 +310,7 @@ namespace PromovArte.Models
             SqlConnection Conn = Conectar();
             SqlCommand Consulta = Conn.CreateCommand();
             Consulta.CommandType = System.Data.CommandType.Text;
-            Consulta.CommandText = "SELECT * FROM Artistas WHERE Nombre='" + art.Nombre + "'AND Apellido='" + art.Apellido + "'AND NombreUsuario='" + art.NombreUsuario + "'AND Contraseña='" + art.Contraseña + "'AND Destacado='" + "', '" + 0 + "', '" + "'AND Descripcion='" + art.Descripcion + "'AND Foto='" + art.NombreFoto + "'";
+            Consulta.CommandText = "SELECT * FROM Artistas WHERE NombreUsuario='" + art.NombreUsuario + "'AND Contraseña='" + art.Contraseña + "'";
 
             SqlDataReader Lector = Consulta.ExecuteReader();
             if (Lector.Read())
