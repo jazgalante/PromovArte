@@ -7,6 +7,6 @@
     "\\PromovArte\\Views",
     "\\PromovArte\\Views\\Home"
   ],
-  "SelectedNode": "\\PromovArte\\Views\\Home\\Index.cshtml",
+  "SelectedNode": "\\PromovArte\\Controllers\\HomeController.cs",
   "PreviewInSolutionExplorer": false
 }

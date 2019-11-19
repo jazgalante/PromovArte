@@ -1,10 +1,10 @@
 ﻿@using PromovArte.Models
 @{
-     ViewBag.Title = "BackOffice";
+    ViewBag.Title = "BackOffice";
 }
 
 <h2>BackOffice</h2>
-@Html.ActionLink("Insertar un evento", "ModificarCrearEvento", "BackOffice", new { Accion = "I", IdEvento=-1 }, null)
+@Html.ActionLink("Insertar un evento", "ModificarCrearEvento", "BackOffice", new { Accion = "I", IdEvento = -1 }, null)
 
 
 @foreach (Evento unEvento in ViewBag.eventos)
@@ -21,9 +21,23 @@
     {
         <p>No destacada</p>
     }
-    <a target="_blank " href='@Url.Action("DestacarEvento", "BackOffice", new { IdEvento = unEvento.IdEvento })'>Destacar</a>
-    <a target="_blank " href='@Url.Action("BorrarEvento", "BackOffice", new { IdEvento = unEvento.IdEvento })'>Borrar</a>
-    <a target="_blank " href='@Url.Action("ModificarCrearEvento", "BackOffice", new { Accion = "E", IdEvento = unEvento.IdEvento })'>Editar</a>
+    @foreach (Artista unArtista in ViewBag.art)
+    {
+
+        <h4>@unEvento.Titulo</h4>
+        <img src="~/Content/@unEvento.NombreImagen" height="50">
+        <br />
+        if (unEvento.Destacado == true)
+        {
+            <p>Destacada</p>
+        }
+        if (unEvento.Destacado == false)
+        {
+            <p>No destacada</p>
+        }
+        <a target="_blank " href='@Url.Action("DestacarEvento", "BackOffice", new { IdEvento = unEvento.IdEvento })'>Destacar</a>
+        <a target="_blank " href='@Url.Action("BorrarEvento", "BackOffice", new { IdEvento = unEvento.IdEvento })'>Borrar</a>
+        <a target="_blank " href='@Url.Action("ModificarCrearEvento", "BackOffice", new { Accion = "E", IdEvento = unEvento.IdEvento })'>Editar</a>
 
 
-}
+    }

@@ -1,0 +1,17 @@
+﻿@using PromovArte.Models
+@{
+    ViewBag.Title = "EditarPerfil";
+    @foreach (Artista art in ViewBag.artistas)
+    {
+        <h3> @art.NombreUsuario</h3>
+        <br />
+        <h4> @art.Nombre, @art.Apellido</h4>
+        <br />
+        <h5>@art.Descripcion</h5>
+        <br />
+        <img src="~/Content/@art.NombreFoto" height="50">
+
+    }
+}
+
+

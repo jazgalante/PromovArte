@@ -8,7 +8,7 @@ namespace PromovArte.Models
 {
     public static class BD
     {
-        public static string connectionString = "Server= A-CAM-03;Database=PromovArte;User Id= alumno; Password= alumno;";
+        public static string connectionString = "Server= A-CAZ-06;Database=PromovArte;User Id= alumno; Password= alumno;";
         public static SqlConnection Conectar()
         {
             SqlConnection a = new SqlConnection(connectionString);
@@ -237,8 +237,34 @@ namespace PromovArte.Models
             return ListaEventos;
         }
 
+        public static List<Artista> ListarTodosArtistas()
+        {
+            List<Artista> ListaArtistas = new List<Artista>();
+            SqlConnection Conn = Conectar();
+            SqlCommand Consulta = Conn.CreateCommand();
+            Consulta.CommandType = System.Data.CommandType.Text;
+            Consulta.CommandText = "SELECT * FROM Artistas";
 
- 
+            SqlDataReader Lector = Consulta.ExecuteReader();
+
+            while (Lector.Read())
+            {
+                int ida = Convert.ToInt32(Lector["IdArtista"]);
+                string nus = Lector["NombreUsuario"].ToString();
+                string nom = Lector["Nombre"].ToString();
+                string ape = Lector["Apellido"].ToString();
+                string contra = Lector["Contraseña"].ToString();
+                bool dest = Convert.ToBoolean(Lector["Destacado"]);
+                string des = Lector["Descripcion"].ToString();
+                string nfot = Lector["Foto"].ToString();
+                Artista art = new Artista(ida, nus, nom, ape, contra, dest, des, nfot);
+                ListaArtistas.Add(art);
+            }
+            Desconectar(Conn);
+            return ListaArtistas;
+        }
+
+
 
         public static void CrearEvento(Evento eve)
         {

@@ -13,6 +13,8 @@ namespace PromovArte.Controllers
         {
            
             ViewBag.eventos = BD.ListarTodosEventos();
+            ViewBag.artistas = BD.ListarTodosArtistas();
+
             return View();
         }
 
@@ -72,6 +74,7 @@ namespace PromovArte.Controllers
 
         public ActionResult ModificarCrearEvento(string Accion, int idEvento)
         {
+            ViewBag.Accion=Accion;
             if (Accion=="E")
             {
                 Evento MiEve = BD.TraerUnEvento(idEvento);
