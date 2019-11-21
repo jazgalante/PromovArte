@@ -2,17 +2,6 @@
 
 @{
     ViewBag.Title = "Index";
-
-    <div>
-        <a href='@Url.Action("EditarPerfil","BackOffice")' title="BackOfficeController " target="blank"> Edita tu perfil</a> <br>
-        <a href='@Url.Action("DetalleEvento", "Home", new { IdEvento = ViewBag.EvDest.IdEvento })'>
-
-
-        </a>
-    </div>
-
-
-    ViewBag.Title = "Index";
     <div>
         <h1> Evento Destacado: </h1>
         <h2>@ViewBag.EvDest.Titulo</h2>

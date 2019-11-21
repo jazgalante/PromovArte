@@ -5,8 +5,9 @@
     "\\PromovArte\\Controllers",
     "\\PromovArte\\Models",
     "\\PromovArte\\Views",
+    "\\PromovArte\\Views\\BackOffice",
     "\\PromovArte\\Views\\Home"
   ],
-  "SelectedNode": "\\PromovArte\\Controllers\\HomeController.cs",
+  "SelectedNode": "\\PromovArte\\Views\\Home\\Index.cshtml",
   "PreviewInSolutionExplorer": false
 }
