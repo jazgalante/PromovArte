@@ -1,0 +1,18 @@
+﻿@using PromovArte.Models
+@model Artista
+@{
+    ViewBag.Title = "Artista";
+}
+    
+        <h3> Nombre de usuario: @Model.NombreUsuario</h3>
+        <br />
+        <h4> Nombre: @Model.Nombre @Model.Apellido</h4>
+        <br />
+        <h5>Descripción: @Model.Descripcion</h5>
+        <br />
+        <img src="~/Content/@Model.NombreFoto" height="150">
+
+    
+
+
+

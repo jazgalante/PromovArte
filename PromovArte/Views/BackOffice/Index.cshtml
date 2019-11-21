@@ -5,6 +5,7 @@
 
 <h2>BackOffice</h2>
 @Html.ActionLink("Insertar un evento", "ModificarCrearEvento", "BackOffice", new { Accion = "I", IdEvento = -1 }, null)
+@Html.ActionLink("Mi perfil", "ModificarCrearArtista", "BackOffice", new { Accion = "E", IdArtista = ViewBag.Id }, null)
 
 
 @foreach (Evento unEvento in ViewBag.eventos)
@@ -21,23 +22,27 @@
     {
         <p>No destacada</p>
     }
-    @foreach (Artista unArtista in ViewBag.art)
+    <a target="_blank " href='@Url.Action("DestacarEvento", "BackOffice", new { IdEvento = unEvento.IdEvento })'>Destacar</a>
+    <a target="_blank " href='@Url.Action("BorrarEvento", "BackOffice", new { IdEvento = unEvento.IdEvento })'>Borrar</a>
+    <a target="_blank " href='@Url.Action("ModificarCrearEvento", "BackOffice", new { Accion = "E", IdEvento = unEvento.IdEvento })'>Editar</a>
+
+}
+@foreach (Artista unArtista in ViewBag.artistas)
+{
+
+    <h4>@unArtista.Nombre</h4>
+    <img src="~/Content/@unArtista.NombreFoto" height="50">
+    <br />
+    if (unArtista.Destacado == true)
     {
-
-        <h4>@unEvento.Titulo</h4>
-        <img src="~/Content/@unEvento.NombreImagen" height="50">
-        <br />
-        if (unEvento.Destacado == true)
-        {
-            <p>Destacada</p>
-        }
-        if (unEvento.Destacado == false)
-        {
-            <p>No destacada</p>
-        }
-        <a target="_blank " href='@Url.Action("DestacarEvento", "BackOffice", new { IdEvento = unEvento.IdEvento })'>Destacar</a>
-        <a target="_blank " href='@Url.Action("BorrarEvento", "BackOffice", new { IdEvento = unEvento.IdEvento })'>Borrar</a>
-        <a target="_blank " href='@Url.Action("ModificarCrearEvento", "BackOffice", new { Accion = "E", IdEvento = unEvento.IdEvento })'>Editar</a>
-
-
+        <p>Destacado</p>
     }
+    if (unArtista.Destacado == false)
+    {
+        <p>No destacado</p>
+    }
+    <a target="_blank " href='@Url.Action("Artista", "BackOffice", new { IdArtista = unArtista.IdArtista })'>Editar perfil</a>
+}
+
+
+
