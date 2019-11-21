@@ -9,9 +9,9 @@ namespace PromovArte.Controllers
 {
     public class BackOfficeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(int IdArt)
         {
-           
+            ViewBag.Id = IdArt;
             ViewBag.eventos = BD.ListarTodosEventos();
             ViewBag.artistas = BD.ListarTodosArtistas();
 
@@ -29,10 +29,11 @@ namespace PromovArte.Controllers
         {
             if(ModelState.IsValid)
             {
-                if(BD.ExisteUsuario(art))
+                int Id = BD.ExisteUsuario(art);
+                if (Id!=-1)
                  {
 
-                     return RedirectToAction("Index", "BackOffice");
+                     return RedirectToAction("Index", "BackOffice", new { IdArt = Id });
 
                  }
                  else
@@ -93,6 +94,7 @@ namespace PromovArte.Controllers
 
             if (Accion == "E")
             {
+
                 Artista art = BD.TraerUnArtista(idArtista); 
                 return View("Artista", art);
             }

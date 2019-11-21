@@ -8,7 +8,7 @@ namespace PromovArte.Models
 {
     public static class BD
     {
-        public static string connectionString = "Server= A-CAZ-06;Database=PromovArte;User Id= alumno; Password= alumno;";
+        public static string connectionString = "Server= A-CAM-03;Database=PromovArte;User Id= alumno; Password= alumno;";
         public static SqlConnection Conectar()
         {
             SqlConnection a = new SqlConnection(connectionString);
@@ -329,9 +329,9 @@ namespace PromovArte.Models
 
         }
 
-        public static bool ExisteUsuario(Artista art)
+        public static int ExisteUsuario(Artista art)
         {
-            bool devolver = false;
+            int devolver = -1;
             List<Artista> ListaArtistas = new List<Artista>();
             SqlConnection Conn = Conectar();
             SqlCommand Consulta = Conn.CreateCommand();
@@ -341,7 +341,7 @@ namespace PromovArte.Models
             SqlDataReader Lector = Consulta.ExecuteReader();
             if (Lector.Read())
             {
-                devolver = true;
+                devolver = Convert.ToInt32(Lector["IdArtista"]);
             }
             Desconectar(Conn);
             return devolver;
