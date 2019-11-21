@@ -1,33 +1,40 @@
 ﻿@using PromovArte.Models
 
 @{
-
-
     ViewBag.Title = "Index";
 
-<div>
-    <a href='@Url.Action("Login","BackOffice")' title="BackOfficeController " target="blank"> Subir, editar o eliminar eventos</a> <br>
-    <a href='@Url.Action("EditarPerfil","BackOffice")' title="BackOfficeController " target="blank"> Edita tu perfil</a> <br>
-    <a href='@Url.Action("DetalleEvento", "Home", new { IdEvento = ViewBag.EvDest.IdEvento })'>
-        <h1>@ViewBag.EvDest.Titulo</h1>
-        <img src="~/Content/@ViewBag.EvDest.NombreImagen" style="width:200px" />
-    </a>
-</div>
-    ViewBag.Title = "Index";
     <div>
-        <a href='@Url.Action("DetalleArtista", "Home", new { IdArtista = ViewBag.ArtDest.IdArtista })'>
-            <h1>@ViewBag.ArtDest.NombreUsuario</h1>
-            <img src="~/Content/@ViewBag.ArtDest.NombreFoto" style="width:200px" />
+        <a href='@Url.Action("EditarPerfil","BackOffice")' title="BackOfficeController " target="blank"> Edita tu perfil</a> <br>
+        <a href='@Url.Action("DetalleEvento", "Home", new { IdEvento = ViewBag.EvDest.IdEvento })'>
+
 
         </a>
     </div>
-    <ul>
+
+
+    ViewBag.Title = "Index";
+    <div>
+        <h1> Evento Destacado: </h1>
+        <h2>@ViewBag.EvDest.Titulo</h2>
+        <img src="~/Content/@ViewBag.EvDest.NombreImagen" style="width:200px; padding:20px" ; />
+        <p>@ViewBag.EvDest.Descripcion</p>
+        <a href='@Url.Action("DetalleEvento", "Home", new { IdEvento = ViewBag.EvDest.IdEvento })'> Más información</a>
+    </div>
+
+    <div>
+        <h1> Artista Destacado: </h1>
+        <h2>@ViewBag.ArtDest.NombreUsuario</h2>
+        <img src="~/Content/@ViewBag.ArtDest.NombreFoto" style="width:200px; padding:20px" ; />
+        <p>@ViewBag.ArtDest.Descripcion</p>
+        <a href='@Url.Action("DetalleArtista", "Home", new { IdArtista = ViewBag.ArtDest.IdArtista })'> Más información</a>
+    </div>
+
+
+    <div>
+        <h2> Buscar eventos por tipo: </h2>
         @foreach (TipoEvento TE in ViewBag.ListaTipo)
-    {
-        <li><a href='@Url.Action("ListadoEventos", "Home", new { IdTipoEvento = TE.IdTipoEvento })'> @TE.Nombre</a></li>
-    }
-    </ul>
-    
+        {
+            <li><a href='@Url.Action("ListadoEventos", "Home", new { IdTipoEvento = TE.IdTipoEvento })'> @TE.Nombre</a></li>
+        }
+    </div>
 }
-
-
