@@ -201,6 +201,7 @@
     <Content Include="Views\BackOffice\Evento.cshtml" />
     <Content Include="Views\BackOffice\Error.cshtml" />
     <Content Include="Views\BackOffice\Artista.cshtml" />
+    <Content Include="Views\BackOffice\EditarArtista.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
