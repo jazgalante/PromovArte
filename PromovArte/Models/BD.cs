@@ -8,7 +8,7 @@ namespace PromovArte.Models
 {
     public static class BD
     {
-        public static string connectionString = "Server= A-CAM-03;Database=PromovArte;User Id= alumno; Password= alumno;";
+        public static string connectionString = "Server= A-CAZ-05;Database=PromovArte;User Id= alumno; Password= alumno;";
         public static SqlConnection Conectar()
         {
             SqlConnection a = new SqlConnection(connectionString);

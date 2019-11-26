@@ -1,0 +1,22 @@
+﻿@using PromovArte.Models
+@model Artista
+    @{
+        ViewBag.Title = "EditarArtista";
+    }
+
+    <h2>EditarArtista</h2>
+
+    @using (Html.BeginForm("GrabarArtista", "BackOffice", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(model => model.IdArtista)
+        @Html.HiddenFor(model => model.NombreFoto)
+        @Html.TextBoxFor(model => model.Nombre)
+        @Html.TextBoxFor(model => model.Apellido)
+        @Html.TextBoxFor(model => model.NombreUsuario) @Html.ValidationMessageFor(model => model.NombreUsuario)
+        @Html.TextBoxFor(model => model.Foto, new { type = "file" })@Html.ValidationMessageFor(model => model.Foto)
+        @Html.PasswordFor(model => model.Contraseña) @Html.ValidationMessageFor(model => model.Contraseña)
+        @Html.CheckBoxFor(model => model.Destacado)
+        @Html.TextBoxFor(model => model.Descripcion)
+
+        <input type="submit" value="Grabar" />
+    }

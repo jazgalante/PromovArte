@@ -89,21 +89,14 @@ namespace PromovArte.Controllers
             }
             return View("Error");
         }
-        public ActionResult ModificarCrearArtista(int idArtista, string Accion)
+        public ActionResult ModificarCrearArtista(int idArtista)
         {
 
-            if (Accion == "E")
-            {
+            
 
                 Artista art = BD.TraerUnArtista(idArtista); 
                 return View("Artista", art);
-            }
-            if (Accion == "I")
-            {
-                
-                return View("Artista");
-            }
-            return View("Error");
+            
         }
 
         [HttpPost]
@@ -130,6 +123,32 @@ namespace PromovArte.Controllers
             {
                 ViewBag.Tipos = BD.ListarTipoEventos();
                 return View("Evento", even);
+            }
+
+            return RedirectToAction("Index");
+
+        }
+
+        [HttpPost]
+        public ActionResult GrabarArtista(Artista ar)
+        {
+            if (ModelState.IsValid)
+            {
+                if (ar.Foto != null)
+                {
+                    string NuevaUbicacion = Server.MapPath("~/Content/") + ar.Foto.FileName;
+                    ar.Foto.SaveAs(NuevaUbicacion);
+                    ar.NombreFoto = ar.Foto.FileName;
+                }
+                
+                    BD.EditarArtista(ar);
+               
+                
+            }
+            else
+            {
+                
+                return View("EditarArtista", ar);
             }
 
             return RedirectToAction("Index");
