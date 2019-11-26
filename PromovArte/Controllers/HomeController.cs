@@ -38,6 +38,8 @@ namespace PromovArte.Controllers
         {
             Artista MiArtista = new Artista();
             MiArtista = BD.TraerUnArtista(IdArtista);
+            List<Evento> MisPublicaciones = BD.ListarEventosXArtista(IdArtista);
+            ViewBag.MisPublicaciones = MisPublicaciones;
             ViewBag.Artista = MiArtista;
             return View();
         }

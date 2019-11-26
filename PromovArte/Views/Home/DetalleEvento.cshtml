@@ -2,12 +2,11 @@
 @{
     ViewBag.Title = "DetalleEvento";
 }
-    <h2 > Detalle del Evento</h2>
-<h1>@ViewBag.evento.Titulo</h1>
-<h3>@ViewBag.evento.Descripcion</h3>
-<h3> El evento se realizará el @ViewBag.evento.Fecha</h3>
+<h2>@ViewBag.evento.Titulo</h2>
+<p>@ViewBag.evento.Descripcion</p>
 <img src="~/Content/@ViewBag.evento.NombreImagen" style="width:200px" />
-    <br>
+<br>
+<p> El evento se realizará el @ViewBag.evento.Fecha</p>
 <a href='@Url.Action("Index","Home")' title="Index " target="blank"> Ir al Index </a>
 
 

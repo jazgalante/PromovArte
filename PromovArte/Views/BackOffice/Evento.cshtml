@@ -8,11 +8,15 @@
 @ViewBag.Error
 @using (Html.BeginForm("GrabarEvento", "BackOffice", new { Accion = ViewBag.Accion }, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+    <p>Tipo de evento</p> <br />
     @Html.HiddenFor(model => model.IdEvento)
-    @Html.HiddenFor(model=> model.NombreImagen)
+    <p>Imagen</p> <br />
+    @Html.HiddenFor(model => model.NombreImagen)
+    <p>Titulo del evento</p> <br />
     @Html.DropDownListFor(model => model.Tipo, new SelectList(ViewBag.Tipos, "IdTipoEvento", "Nombre"))
     @Html.TextBoxFor(model => model.Titulo) @Html.ValidationMessageFor(model => model.Titulo)
     @Html.TextBoxFor(model => model.Foto, new { type = "file" })@Html.ValidationMessageFor(model => model.Foto)
+    <p>Descripción del evento</p> <br />
     @Html.TextBoxFor(model => model.Descripcion) @Html.ValidationMessageFor(model => model.Descripcion)
     @Html.CheckBoxFor(model => model.Destacado)
 

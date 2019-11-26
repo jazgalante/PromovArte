@@ -23,7 +23,7 @@
         <h2> Buscar eventos por tipo: </h2>
         @foreach (TipoEvento TE in ViewBag.ListaTipo)
         {
-            <li><a href='@Url.Action("ListadoEventos", "Home", new { IdTipoEvento = TE.IdTipoEvento })'> @TE.Nombre</a></li>
+           <a href='@Url.Action("ListadoEventos", "Home", new { IdTipoEvento = TE.IdTipoEvento })'> @TE.Nombre </a>
         }
     </div>
 }

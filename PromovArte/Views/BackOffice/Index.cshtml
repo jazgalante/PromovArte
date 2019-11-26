@@ -3,10 +3,15 @@
     ViewBag.Title = "BackOffice";
 }
 
-<h2>BackOffice</h2>
-@Html.ActionLink("Insertar un evento", "ModificarCrearEvento", "BackOffice", new { Accion = "I", IdEvento = -1 }, null)
+<h2>Bienvenido a PromovArte</h2>
+<p>¿Qué desea hacer?</p>
+<p>Nota: usted está usando PromovArte como usuario administrador. Los cambios que realize afectaran a todos los eventos y artistas, y no solo a usted.</p>
+
+@Html.ActionLink("Crear un evento", "ModificarCrearEvento", "BackOffice", new { Accion = "I", IdEvento = -1 }, null)
 @Html.ActionLink("Mi perfil", "ModificarCrearArtista", "BackOffice", new { Accion = "E", IdArtista = ViewBag.Id }, null)
 
+
+<h3>Todos los eventos</h3>
 
 @foreach (Evento unEvento in ViewBag.eventos)
 {
@@ -25,12 +30,14 @@
     <a target="_blank " href='@Url.Action("DestacarEvento", "BackOffice", new { IdEvento = unEvento.IdEvento })'>Destacar</a>
     <a target="_blank " href='@Url.Action("BorrarEvento", "BackOffice", new { IdEvento = unEvento.IdEvento })'>Borrar</a>
     <a target="_blank " href='@Url.Action("ModificarCrearEvento", "BackOffice", new { Accion = "E", IdEvento = unEvento.IdEvento })'>Editar</a>
-
 }
+
+    <h3>Todos los artistas</h3>
+
 @foreach (Artista unArtista in ViewBag.artistas)
 {
 
-    <h4>@unArtista.Nombre</h4>
+    <h4>@unArtista.Nombre @unArtista.Apellido</h4>
     <img src="~/Content/@unArtista.NombreFoto" height="50">
     <br />
     if (unArtista.Destacado == true)
