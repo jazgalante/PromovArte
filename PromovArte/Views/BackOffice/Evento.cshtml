@@ -19,6 +19,6 @@
     <p>Descripción del evento</p> <br />
     @Html.TextBoxFor(model => model.Descripcion) @Html.ValidationMessageFor(model => model.Descripcion)
     @Html.CheckBoxFor(model => model.Destacado)
-
+    @Html.TextBoxFor(model => model.Fecha) @Html.ValidationMessageFor(model => model.Fecha)
     <input type="submit" value="Grabar" />
 }

@@ -32,7 +32,7 @@ namespace PromovArte.Controllers
                 int Id = BD.ExisteUsuario(art);
                 if (Id!=-1)
                  {
-
+                    Session["Artista"] = Id;
                      return RedirectToAction("Index", "BackOffice", new { IdArt = Id });
 
                  }
@@ -52,23 +52,18 @@ namespace PromovArte.Controllers
         public ActionResult DestacarEvento(int IdEvento)
         {
             BD.DestacarEvento(IdEvento);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "BackOffice", new { IdArt = -1 });
         }
         public ActionResult BorrarEvento(int IdEvento)
         {
             BD.BorrarEvento(IdEvento);
-            return RedirectToAction("Index", "Backoffice");
+            return RedirectToAction("Index", "BackOffice", new { IdArt = -1 });
         }
 
         public ActionResult DestacarArtista(int IdArtista)
         {
             BD.DestacarArtista(IdArtista);
-            return RedirectToAction("Index", "Home");
-        }
-        public ActionResult BorrarArtista(int IdArtista)
-        {
-            BD.BorrarArtista(IdArtista);
-            return RedirectToAction("Index", "Backoffice");
+            return RedirectToAction("Index", "Home", new { IdArt = IdArtista });
         }
 
 
@@ -89,14 +84,21 @@ namespace PromovArte.Controllers
             }
             return View("Error");
         }
-        public ActionResult ModificarCrearArtista(int idArtista)
+        public ActionResult ModificarCrearArtista(int idArtista, string Accion)
         {
-
-            
-
-                Artista art = BD.TraerUnArtista(idArtista); 
+            if (Accion == "E")
+            {
+                Artista art = BD.TraerUnArtista(idArtista);
+                return View("EditarArtista", art);
+            }
+            else
+            {
+                Artista art = BD.TraerUnArtista(idArtista);
                 return View("Artista", art);
-            
+            }
+
+
+
         }
 
         [HttpPost]
@@ -112,10 +114,18 @@ namespace PromovArte.Controllers
                 }
                 if (Accion == "E")
                 {
+                    if (Session["Artista"] != null)
+                    {
+                        even.Artista = Convert.ToInt32(Session["Artista"]);
+                    }
                     BD.EditarEvento(even);
                 }
                 if (Accion== "I")
                 {
+                    if (Session["Artista"] != null)
+                    {
+                        even.Artista = Convert.ToInt32(Session["Artista"]);
+                    }
                     BD.CrearEvento(even);
                 }
             }
@@ -125,7 +135,7 @@ namespace PromovArte.Controllers
                 return View("Evento", even);
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "BackOffice", new { IdArt = -1 });
 
         }
 
@@ -151,7 +161,7 @@ namespace PromovArte.Controllers
                 return View("EditarArtista", ar);
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { IdArt = ar.IdArtista });
 
         }
 

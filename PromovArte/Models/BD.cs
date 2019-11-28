@@ -8,7 +8,7 @@ namespace PromovArte.Models
 {
     public static class BD
     {
-        public static string connectionString = "Server= A-CAZ-06;Database=PromovArte;User Id= alumno; Password= alumno;";
+        public static string connectionString = "Server= A-CBO-04;Database=PromovArte;User Id= alumno; Password= alumno;";
         public static SqlConnection Conectar()
         {
             SqlConnection a = new SqlConnection(connectionString);
@@ -274,7 +274,7 @@ namespace PromovArte.Models
             SqlConnection Conec = Conectar();
             SqlCommand Consulta = Conec.CreateCommand();
             Consulta.CommandType = System.Data.CommandType.Text;
-            Consulta.CommandText = "INSERT INTO Eventos (Tipo, Descripcion, Titulo, Artista, Foto, Destacado, Fecha) VALUES (" + eve.Tipo + ", '" + eve.Descripcion + "', '" + eve.Titulo + "', '" + eve.Artista + "', '" + eve.Foto + "','" + 0 + "', '" + eve.Fecha + "')";
+            Consulta.CommandText = "INSERT INTO Eventos (Artista, Tipo, Descripcion, Titulo, Foto, Destacado, Fecha) VALUES (" + eve.Artista + "," + eve.Tipo + ", '" + eve.Descripcion + "', '" + eve.Titulo + "', '"   + eve.Foto.FileName + "'," + 0 + ", '" + eve.Fecha + "')";
             Consulta.ExecuteNonQuery();
             Desconectar(Conec);
 
@@ -300,25 +300,6 @@ namespace PromovArte.Models
 
         }
         
-        public static void CrearArtista(Artista arti)
-        {
-
-            SqlConnection Conec = Conectar();
-            SqlCommand Consulta = Conec.CreateCommand();
-            Consulta.CommandType = System.Data.CommandType.Text;
-            Consulta.CommandText = "INSERT INTO Artistas (Nombre, Apellido, NombreUsuario, Contraseña, Destacado, Descripcion) VALUES (" + arti.Nombre + ", '" + arti.Apellido + "', '" + arti.NombreUsuario + "', '" + arti.Contraseña + "', '" + 0 + "', '" + arti.Descripcion + arti.NombreFoto + ")";
-            Consulta.ExecuteNonQuery();
-            Desconectar(Conec);
-        }
-        public static void BorrarArtista(int IdArtista)
-        {
-            SqlConnection Conec = Conectar();
-            SqlCommand Consulta = Conec.CreateCommand();
-            Consulta.CommandType = System.Data.CommandType.Text;
-            Consulta.CommandText = "DELETE FROM Artistas WHERE IdArtista = " + IdArtista;
-            Consulta.ExecuteNonQuery();
-            Desconectar(Conec);
-        }
         public static void EditarArtista(Artista ar)
         {
 

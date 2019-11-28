@@ -4,7 +4,7 @@
     ViewBag.Title = "Artista";
 }
 
-<a target="_blank " href='@Url.Action("ModificarCrearArtista", "BackOffice", new { idArtista = Model.IdArtista })'>Editar Perfil</a>
+<a target="_blank " href='@Url.Action("ModificarCrearArtista", "BackOffice", new { idArtista = Model.IdArtista, Accion="E"})'>Editar Perfil</a>
 
 <h3> Nombre de usuario: @Model.NombreUsuario</h3>
 <br />
