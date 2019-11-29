@@ -12,8 +12,7 @@ namespace PromovArte.Controllers
         public ActionResult Index(int IdArt)
         {
             ViewBag.Id = IdArt;
-            ViewBag.eventos = BD.ListarTodosEventos();
-            ViewBag.artistas = BD.ListarTodosArtistas();
+            ViewBag.eventos = BD.ListarEventosXArtista(IdArt);
 
             return View();
         }

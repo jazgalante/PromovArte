@@ -2,16 +2,13 @@
 @{
     ViewBag.Title = "BackOffice";
 }
-
-<h2>Bienvenido a PromovArte</h2>
 <p>¿Qué desea hacer?</p>
-<p>Nota: usted está usando PromovArte como usuario administrador. Los cambios que realize afectaran a todos los eventos y artistas, y no solo a usted.</p>
 
 @Html.ActionLink("Crear un evento", "ModificarCrearEvento", "BackOffice", new { Accion = "I", IdEvento = -1 }, null)
 @Html.ActionLink("Mi perfil", "ModificarCrearArtista", "BackOffice", new { Accion = "i", IdArtista = ViewBag.Id }, null)
 
 
-<h3>Todos los eventos</h3>
+<h3>Tus eventos</h3>
 
 @foreach (Evento unEvento in ViewBag.eventos)
 {
@@ -35,27 +32,3 @@
     }
 
 }
-
-<h3>Todos los artistas</h3>
-
-@foreach (Artista unArtista in ViewBag.artistas)
-{
-
-    <h4>@unArtista.Nombre @unArtista.Apellido</h4>
-    <img src="~/Content/@unArtista.NombreFoto" height="50">
-    <br />
-    <h5>@unArtista.Descripcion</h5>
-
-    if (unArtista.Destacado == true)
-    {
-        <p>Destacado</p>
-    }
-    if (unArtista.Destacado == false)
-    {
-        <p>No destacado</p>
-    }
-    
-}
-
-
-
