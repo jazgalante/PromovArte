@@ -2,12 +2,90 @@
 @{
     ViewBag.Title = "DetalleEvento";
 }
-<h2>@ViewBag.evento.Titulo</h2>
+<head>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/nice-select.css">
+    <link rel="stylesheet" href="~/Content/flaticon.css">
+    <link rel="stylesheet" href="~/Content/animate.css">
+    <link rel="stylesheet" href="~/Content/slicknav.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+</head>
+<!-- header-start -->
+<header>
+    <div class="header-area ">
+        <div class="header_top">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-4 col-md-4 d-none d-md-block">
+                        <div class="header_links ">
+
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4">
+                        <div class="logo">
+                            <a href="index.html">
+                                <img src="img/logo.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 d-none d-md-block">
+                        <div class="login_resiter">
+                            <p><a href="@Url.Action("Login", "BackOffice")">Acceder</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sticky-header" class="main-header-area white-bg">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-7 col-lg-7">
+                        <div class="main-menu  d-none d-lg-block">
+                            <nav>
+                                <ul id="navigation">
+                                    <li><a class="active" href="@Url.Action("Index","Home")">Home</a></li>
+                                    <li>
+                                        <a href="#">Categorías</a>
+                                        <ul class="submenu">
+
+                                            @foreach (TipoEvento TE in ViewBag.ListaTipo)
+                                            {
+                                                <li><a href='@Url.Action("ListadoEventos", "Home", new { IdTipoEvento = TE.IdTipoEvento })'> @TE.Nombre </a></li>
+                                            }
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Contacto</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-5">
+                        <div class="get_serch">
+                            <a id="search_1" href="javascript:void(0)"></a>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header-end -->
+
+<div class="welcome_protomedia2">
+    <h1>@ViewBag.evento.Titulo</h1>
+</div>
+
 <p>@ViewBag.evento.Descripcion</p>
-<img src="~/Content/@ViewBag.evento.NombreImagen" style="width:200px" />
-<br>
 <p> El evento se realizará el @ViewBag.evento.Fecha</p>
-<a href='@Url.Action("Index","Home")' title="Index " target="blank"> Ir al Index </a>
+<img src="~/Content/@ViewBag.evento.NombreImagen" style="width:400px; height:400px;" />
+<br>
 
 
 

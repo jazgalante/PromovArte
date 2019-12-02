@@ -4,15 +4,31 @@
     ViewBag.Title = "Artista";
 }
 
-<a target="_blank " href='@Url.Action("ModificarCrearArtista", "BackOffice", new { idArtista = Model.IdArtista, Accion="E"})'>Editar Perfil</a>
+<head>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/nice-select.css">
+    <link rel="stylesheet" href="~/Content/flaticon.css">
+    <link rel="stylesheet" href="~/Content/animate.css">
+    <link rel="stylesheet" href="~/Content/slicknav.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+</head>
+
+
 
 <h3> Nombre de usuario: @Model.NombreUsuario</h3>
 <br />
-<h4> Nombre: @Model.Nombre @Model.Apellido</h4>
+<h3> Nombre: @Model.Nombre @Model.Apellido</h3>
 <br />
-<h5>Descripción: @Model.Descripcion</h5>
+<h3>Descripción: @Model.Descripcion</h3>
 <br />
-<img src="~/Content/@Model.NombreFoto" height="150">
+<img src="~/Content/@Model.NombreFoto" height="300">
+<br />
+<br />
+<a target="_blank " href='@Url.Action("ModificarCrearArtista", "BackOffice", new { idArtista = Model.IdArtista, Accion="E"})'>Editar Perfil</a>
 
 
 

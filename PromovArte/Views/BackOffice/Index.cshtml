@@ -2,17 +2,34 @@
 @{
     ViewBag.Title = "BackOffice";
 }
-<p>¿Qué desea hacer?</p>
 
-@Html.ActionLink("Crear un evento", "ModificarCrearEvento", "BackOffice", new { Accion = "I", IdEvento = -1 }, null)
-@Html.ActionLink("Mi perfil", "ModificarCrearArtista", "BackOffice", new { Accion = "i", IdArtista = ViewBag.Id }, null)
+<head>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/nice-select.css">
+    <link rel="stylesheet" href="~/Content/flaticon.css">
+    <link rel="stylesheet" href="~/Content/animate.css">
+    <link rel="stylesheet" href="~/Content/slicknav.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+</head>
+<br />
+<br />
+<div class="welcome_protomedia2">
+    <h1>Bienvenido a tu información</h1>
+</div>
+<h3>¿Qué desea hacer?</h3>
 
-
-<h3>Tus eventos</h3>
-
+@Html.ActionLink("- Crear un evento", "ModificarCrearEvento", "BackOffice", new { Accion = "I", IdEvento = -1 }, null) <br />
+@Html.ActionLink("- Ver mi perfil", "ModificarCrearArtista", "BackOffice", new { Accion = "i", IdArtista = ViewBag.Id }, null)
+<br />
+<br />
+<br />
+<h1>Tus eventos</h1>
 @foreach (Evento unEvento in ViewBag.eventos)
 {
-
     <h4>@unEvento.Titulo</h4>
     <img src="~/Content/@unEvento.NombreImagen" height="50">
     <br />

@@ -32,6 +32,7 @@ namespace PromovArte.Controllers
             Evento MiEvento = new Evento();
             MiEvento = BD.TraerUnEvento(IdEvento);
             ViewBag.Evento = MiEvento;
+            ViewBag.ListaTipo = BD.ListarTipoEventos();
             return View();
         }
         public ActionResult DetalleArtista(int IdArtista)
@@ -41,6 +42,7 @@ namespace PromovArte.Controllers
             List<Evento> MisPublicaciones = BD.ListarEventosXArtista(IdArtista);
             ViewBag.MisPublicaciones = MisPublicaciones;
             ViewBag.Artista = MiArtista;
+            ViewBag.ListaTipo = BD.ListarTipoEventos();
             return View();
         }
 
@@ -49,6 +51,7 @@ namespace PromovArte.Controllers
         {
 
             ViewBag.ListaEventosTipo = BD.ListarEventosXTipo(IdTipoEvento);
+            ViewBag.ListaTipo = BD.ListarTipoEventos();
             return View();
         }
         public ActionResult ListadoEventosPorArtista(int IdArtista)

@@ -4,11 +4,32 @@
 @{
     ViewBag.Title = "Login";
 }
+
+<head>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/nice-select.css">
+    <link rel="stylesheet" href="~/Content/flaticon.css">
+    <link rel="stylesheet" href="~/Content/animate.css">
+    <link rel="stylesheet" href="~/Content/slicknav.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+</head>
+
 @ViewBag.Error
 @using (Html.BeginForm("LoginUsuario", "BackOffice", FormMethod.Post))
 {
+    <br />
+    <br />
+
     <p>Nombre de usuario:</p> @Html.TextBoxFor(model => model.NombreUsuario) @Html.ValidationMessageFor(model => model.NombreUsuario) <br />
+    <br />
+    <br />
     <p>Contraseña:</p> @Html.PasswordFor(model => model.Contraseña) @Html.ValidationMessageFor(model => model.Contraseña)<br />
-    <input type="submit" value="Enviar" />
+    <br />
+    <br />
+    <input type="submit" value="Iniciar Sesion" />
 }
 

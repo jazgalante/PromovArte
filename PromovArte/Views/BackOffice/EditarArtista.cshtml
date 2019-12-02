@@ -1,22 +1,59 @@
 ﻿@using PromovArte.Models
 @model Artista
-    @{
-        ViewBag.Title = "EditarArtista";
-    }
+@{
+    ViewBag.Title = "EditarArtista";
+}
 
-    <h2>EditarArtista</h2>
+<head>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/nice-select.css">
+    <link rel="stylesheet" href="~/Content/flaticon.css">
+    <link rel="stylesheet" href="~/Content/animate.css">
+    <link rel="stylesheet" href="~/Content/slicknav.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+</head>
 
-    @using (Html.BeginForm("GrabarArtista", "BackOffice", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        @Html.HiddenFor(model => model.IdArtista)
-        @Html.HiddenFor(model => model.NombreFoto)
-        @Html.TextBoxFor(model => model.Nombre)
-        @Html.TextBoxFor(model => model.Apellido)
-        @Html.TextBoxFor(model => model.NombreUsuario) @Html.ValidationMessageFor(model => model.NombreUsuario)
-        @Html.TextBoxFor(model => model.Foto, new { type = "file" })@Html.ValidationMessageFor(model => model.Foto)
-        @Html.PasswordFor(model => model.Contraseña) @Html.ValidationMessageFor(model => model.Contraseña)
-        @Html.CheckBoxFor(model => model.Destacado)
-        @Html.TextBoxFor(model => model.Descripcion)
+<h2>Editar Perfil</h2>
 
-        <input type="submit" value="Grabar" />
-    }
+<p>Nombre</p>
+@Html.TextBoxFor(model => model.Nombre)
+<br />
+<br />
+<p>Apellido</p>
+@Html.TextBoxFor(model => model.Apellido)
+<br />
+<br />
+<p>Nombre de usuario</p>
+@Html.TextBoxFor(model => model.NombreUsuario) @Html.ValidationMessageFor(model => model.NombreUsuario)
+<br />
+<br />
+<p>Contraseña</p>
+@Html.PasswordFor(model => model.Contraseña) @Html.ValidationMessageFor(model => model.Contraseña)
+<br />
+<br />
+
+<p>Imagen</p>
+@Html.HiddenFor(model => model.NombreFoto)
+@Html.TextBoxFor(model => model.Foto, new { type = "file" })@Html.ValidationMessageFor(model => model.Foto)
+<br />
+<br />
+<p>Descripción</p>
+@Html.TextBoxFor(model => model.Descripcion)
+<br />
+<br />
+
+<p>¿Destacar?</p>
+@Html.CheckBoxFor(model => model.Destacado)
+<br />
+<br />
+
+@Html.HiddenFor(model => model.IdArtista)
+
+@using (Html.BeginForm("GrabarArtista", "BackOffice", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="submit" value="Grabar" />
+}

@@ -4,21 +4,53 @@
     ViewBag.Title = "BackOffice";
 }
 
-<h2>BackOffice</h2>
+<head>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/themify-icons.css">
+    <link rel="stylesheet" href="~/Content/nice-select.css">
+    <link rel="stylesheet" href="~/Content/flaticon.css">
+    <link rel="stylesheet" href="~/Content/animate.css">
+    <link rel="stylesheet" href="~/Content/slicknav.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+</head>
+<br />
+<br />
+<br />
+<h2>Evento</h2>
 @ViewBag.Error
 @using (Html.BeginForm("GrabarEvento", "BackOffice", new { Accion = ViewBag.Accion }, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <p>Tipo de evento</p> <br />
-    @Html.HiddenFor(model => model.IdEvento)
-    <p>Imagen</p> <br />
-    @Html.HiddenFor(model => model.NombreImagen)
-    <p>Titulo del evento</p> <br />
+
+    <p>Tipo de evento</p>
     @Html.DropDownListFor(model => model.Tipo, new SelectList(ViewBag.Tipos, "IdTipoEvento", "Nombre"))
-    @Html.TextBoxFor(model => model.Titulo) @Html.ValidationMessageFor(model => model.Titulo)
+    <br />
+    <br />
+    <p>Imagen</p>
+    @Html.HiddenFor(model => model.NombreImagen)
     @Html.TextBoxFor(model => model.Foto, new { type = "file" })@Html.ValidationMessageFor(model => model.Foto)
-    <p>Descripción del evento</p> <br />
+    <br />
+    <br />
+    <p>Titulo</p>
+    @Html.TextBoxFor(model => model.Titulo) @Html.ValidationMessageFor(model => model.Titulo)
+    <br />
+    <br />
+    <p>Descripción</p>
     @Html.TextBoxFor(model => model.Descripcion) @Html.ValidationMessageFor(model => model.Descripcion)
-    @Html.CheckBoxFor(model => model.Destacado)
+    <br />
+    <br />
+    <p>Fecha</p>
     @Html.TextBoxFor(model => model.Fecha) @Html.ValidationMessageFor(model => model.Fecha)
+    <br />
+    <br />
+    <p>¿Destacar?</p>
+    @Html.CheckBoxFor(model => model.Destacado)
+    <br />
+    <br />
+
+    @Html.HiddenFor(model => model.IdEvento)
+
     <input type="submit" value="Grabar" />
 }

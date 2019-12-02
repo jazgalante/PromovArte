@@ -13,7 +13,7 @@ namespace PromovArte.Controllers
         {
             ViewBag.Id = IdArt;
             ViewBag.eventos = BD.ListarEventosXArtista(IdArt);
-
+              ViewBag.ListaTipo = BD.ListarTipoEventos();
             return View();
         }
 
