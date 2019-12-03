@@ -51,12 +51,15 @@ namespace PromovArte.Controllers
         public ActionResult DestacarEvento(int IdEvento)
         {
             BD.DestacarEvento(IdEvento);
-            return RedirectToAction("Index", "BackOffice", new { IdArt = -1 });
+
+            int Id = Convert.ToInt32(Session["Artista"]);
+            return RedirectToAction("Index", "BackOffice", new { IdArt = Id });
         }
         public ActionResult BorrarEvento(int IdEvento)
         {
             BD.BorrarEvento(IdEvento);
-            return RedirectToAction("Index", "BackOffice", new { IdArt = -1 });
+            int Id = Convert.ToInt32(Session["Artista"]);
+            return RedirectToAction("Index", "BackOffice", new { IdArt = Id });
         }
 
         public ActionResult DestacarArtista(int IdArtista)
@@ -134,33 +137,35 @@ namespace PromovArte.Controllers
                 return View("Evento", even);
             }
 
-            return RedirectToAction("Index", "BackOffice", new { IdArt = -1 });
+            int Id = Convert.ToInt32(Session["Artista"]);
+            return RedirectToAction("Index", "BackOffice", new { IdArt = Id });
 
         }
 
         [HttpPost]
-        public ActionResult GrabarArtista(Artista ar)
+        public ActionResult GrabarArtista(Artista art)
         {
             if (ModelState.IsValid)
             {
-                if (ar.Foto != null)
+                if (art.Foto != null)
                 {
-                    string NuevaUbicacion = Server.MapPath("~/Content/") + ar.Foto.FileName;
-                    ar.Foto.SaveAs(NuevaUbicacion);
-                    ar.NombreFoto = ar.Foto.FileName;
+                    string NuevaUbicacion = Server.MapPath("~/Content/") + art.Foto.FileName;
+                    art.Foto.SaveAs(NuevaUbicacion);
+                    art.NombreFoto = art.Foto.FileName;
                 }
                 
-                    BD.EditarArtista(ar);
+                    BD.EditarArtista(art);
                
                 
             }
             else
             {
+              
                 
-                return View("EditarArtista", ar);
+                return View("EditarArtista", art);
             }
 
-            return RedirectToAction("Index", new { IdArt = ar.IdArtista });
+            return RedirectToAction("Index", new { IdArt = art.IdArtista });
 
         }
 

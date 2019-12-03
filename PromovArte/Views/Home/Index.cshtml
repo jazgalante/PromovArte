@@ -49,7 +49,19 @@
                             </div>
                             <div class="col-xl-4 col-md-4 d-none d-md-block">
                                 <div class="login_resiter">
-                                    <p><a href="@Url.Action("Login", "BackOffice")">Acceder</a></p>
+
+                                    @{int Id = Convert.ToInt32(Session["Artista"]);
+
+                                        if (Id < 0)
+                                        {
+                                            <p><a href="@Url.Action("Login", "BackOffice")">Desloguear</a></p>
+                                        }
+                                        else
+                                        {
+                                            <p><a href="@Url.Action("Login", "BackOffice")">Acceder</a></p>
+                                        }
+                                    }
+                                   
                                 </div>
                             </div>
                         </div>

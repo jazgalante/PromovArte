@@ -583,3 +583,4 @@ C:\Users\47974849\Desktop\p2\PromovArte\obj\Debug\PromovArte.csproj.CoreCompileI
 C:\Users\47974849\Desktop\p2\PromovArte\obj\Debug\PromovArte.csproj.CopyComplete
 C:\Users\47974849\Desktop\p2\PromovArte\obj\Debug\PromovArte.dll
 C:\Users\47974849\Desktop\p2\PromovArte\obj\Debug\PromovArte.pdb
+C:\Users\44451661\Desktop\prog\PromovArte\obj\Debug\PromovArte.csprojAssemblyReference.cache

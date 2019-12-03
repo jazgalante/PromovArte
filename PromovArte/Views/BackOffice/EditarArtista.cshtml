@@ -17,43 +17,99 @@
     <link rel="stylesheet" href="~/Content/style.css">
 </head>
 
+<!-- header-start -->
+<header>
+    <div class="header-area ">
+        <div class="header_top">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-4 col-md-4 d-none d-md-block">
+                        <div class="header_links ">
+
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4">
+                        <div class="logo">
+                            <a href="index.html">
+                                <img src="img/logo.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-4 d-none d-md-block">
+                        <div class="login_resiter">
+                            <p><a href="@Url.Action("Login", "BackOffice")">Desloguear</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sticky-header" class="main-header-area white-bg">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-7 col-lg-7">
+                        <div class="main-menu  d-none d-lg-block">
+                            <nav>
+                                <ul id="navigation">
+                                    <li><a class="active" href="@Url.Action("Index","Home")">Home</a></li>
+                                    @{int Id = Convert.ToInt32(Session["Artista"]);
+                                    }
+                                    <li><a class="active" href="@Url.Action("Index","BackOffice", new { IdArt = Id } )">Volver a mi información</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-5">
+                        <div class="get_serch">
+                            <a id="search_1" href="javascript:void(0)"></a>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header-end -->
+
 <h2>Editar Perfil</h2>
-
-<p>Nombre</p>
-@Html.TextBoxFor(model => model.Nombre)
-<br />
-<br />
-<p>Apellido</p>
-@Html.TextBoxFor(model => model.Apellido)
-<br />
-<br />
-<p>Nombre de usuario</p>
-@Html.TextBoxFor(model => model.NombreUsuario) @Html.ValidationMessageFor(model => model.NombreUsuario)
-<br />
-<br />
-<p>Contraseña</p>
-@Html.PasswordFor(model => model.Contraseña) @Html.ValidationMessageFor(model => model.Contraseña)
-<br />
-<br />
-
-<p>Imagen</p>
-@Html.HiddenFor(model => model.NombreFoto)
-@Html.TextBoxFor(model => model.Foto, new { type = "file" })@Html.ValidationMessageFor(model => model.Foto)
-<br />
-<br />
-<p>Descripción</p>
-@Html.TextBoxFor(model => model.Descripcion)
-<br />
-<br />
-
-<p>¿Destacar?</p>
-@Html.CheckBoxFor(model => model.Destacado)
-<br />
-<br />
-
-@Html.HiddenFor(model => model.IdArtista)
-
 @using (Html.BeginForm("GrabarArtista", "BackOffice", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+
+    <p>Nombre</p>
+    @Html.TextBoxFor(model => model.Nombre)
+    <br />
+    <br />
+    <p>Apellido</p>
+    @Html.TextBoxFor(model => model.Apellido)
+    <br />
+    <br />
+    <p>Nombre de usuario</p>
+    @Html.TextBoxFor(model => model.NombreUsuario) @Html.ValidationMessageFor(model => model.NombreUsuario)
+    <br />
+    <br />
+    <p>Contraseña</p>
+    @Html.PasswordFor(model => model.Contraseña) @Html.ValidationMessageFor(model => model.Contraseña)
+    <br />
+    <br />
+
+    <p>Imagen</p>
+    @Html.HiddenFor(model => model.NombreFoto)
+    @Html.TextBoxFor(model => model.Foto, new { type = "file" })@Html.ValidationMessageFor(model => model.Foto)
+    <br />
+    <br />
+    <p>Descripción</p>
+    @Html.TextBoxFor(model => model.Descripcion)
+    <br />
+    <br />
+
+    <p>¿Destacar?</p>
+    @Html.CheckBoxFor(model => model.Destacado)
+    <br />
+    <br />
+
+    @Html.HiddenFor(model => model.IdArtista)
+
     <input type="submit" value="Grabar" />
 }

@@ -8,7 +8,7 @@ namespace PromovArte.Models
 {
     public static class BD
     {
-        public static string connectionString = "Server= A-CCE-08;Database=PromovArte;User Id= alumno; Password= alumno;";
+        public static string connectionString = "Server= A-CAZ-06;Database=PromovArte;User Id= alumno; Password= alumno;";
         public static SqlConnection Conectar()
         {
             SqlConnection a = new SqlConnection(connectionString);
@@ -123,8 +123,8 @@ namespace PromovArte.Models
             SqlConnection Conec = Conectar();
             SqlCommand Consulta = Conec.CreateCommand();
             Consulta.CommandType = System.Data.CommandType.Text;
-            Consulta.CommandText = "UPDATE Eventos SET Destacado = 0 WHERE Destacado = 1";
-            Consulta.CommandText = "UPDATE Eventos SET Destacado = 1 WHERE IdEvento = " + IdEvento;
+            Consulta.CommandText = "UPDATE Eventos SET Destacado = 0 WHERE Destacado = 1UPDATE Eventos SET Destacado = 1 WHERE IdEvento = " + IdEvento;
+           
             Consulta.ExecuteNonQuery();
             Desconectar(Conec);
         }
